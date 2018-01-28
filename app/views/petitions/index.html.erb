@@ -1,0 +1,28 @@
+<h1>Blogs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Petion Title</th>
+      <th>Body</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @petitions.each do |petition| %>
+      <tr>
+        <td><%= petition.title %></td>
+        <td><%= petition.body %></td>
+        <td><%= link_to 'Show', petition %></td>
+        <td><%= link_to 'Edit', edit_petition_path(petition) %></td>
+        <td><%= link_to 'Delete Petition', petition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= @petitions.inspect %>
+<a class="btn btn-primary" href="#">Test</a>
+
+<%= link_to 'Home', root_path %>
