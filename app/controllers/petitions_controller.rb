@@ -4,7 +4,8 @@ class PetitionsController < ApplicationController
     @petitions = Petition.all
   end
 
-  def show 
+  def show
+    @petition = Petition.find(params[:id])
   end
 
   def new
@@ -12,26 +13,27 @@ class PetitionsController < ApplicationController
   end
 
   def edit
+    @petition = Petition.find(params[:id])
   end
 
   def create
-    @petitions = Petition.new(blog_params)
-
+    @petition = Petition.new(params.require(:petition).permit(:title, :body, [:name]))
     respond_to do |format|
       if @petition.save
-        format.html { redirect_to @petition, notice: 'Petition was successfully created.' }
-        format.json { render :show, status: :created, location: @petition }
-      else
+        format.html { redirect_to petitions_path, notice: 'Your petition was created.' }
+      else 
         format.html { render :new }
-        format.json { render json: @petition.errors, status: :unprocessable_entity }
-      end
+      end 
     end
   end
-def destroy
+
+  def destroy
+    @petition = Petition.find(params[:id])
+
     @petition.destroy
+
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Petition was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to petitions_url, notice: 'Petition was deleted.' }
     end
   end
 end

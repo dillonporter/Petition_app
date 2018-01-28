@@ -1,9 +1,13 @@
-<h1>Blogs</h1>
+
+<%= link_to 'Home', root_path %>
+<%= link_to 'Create Petition', new_petition_path %>
+
+<h1>Current Petitions</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Petion Title</th>
+      <th>Petition Title</th>
       <th>Body</th>
       <th colspan="4"></th>
     </tr>
@@ -22,7 +26,6 @@
 </table>
 
 <br>
-<%= @petitions.inspect %>
-<a class="btn btn-primary" href="#">Test</a>
 
-<%= link_to 'Home', root_path %>
+
+
