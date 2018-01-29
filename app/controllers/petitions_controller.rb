@@ -27,6 +27,17 @@ class PetitionsController < ApplicationController
     end
   end
 
+  def update
+    @petition = Petition.find(params[:id])
+    respond_to do |format|
+      if @petition.update(params.require(:petition).permit(:title, :body))
+        format.html { redirect_to petitions_path, notice: 'Petition successfully changed.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
   def destroy
     @petition = Petition.find(params[:id])
 
