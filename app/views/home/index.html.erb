@@ -1,5 +1,21 @@
-
-
-<a class="btn btn-primary" href="#">Test</a>
-
-<%= link_to 'Petitions', petitions_path %>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-3">Create a Petition</h1>
+    <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p><% if user_signed_in? %>
+      <%= link_to "Start a petition", new_petition_path, class: "btn btn-lg btn-success" %>
+      <% else %>
+      <%= link_to "Sign up today", new_user_session_path, class: "btn btn-lg btn-success" %>
+      <% end %></p>
+  </div>
+  
+  <h2>Trending petitions</h2>
+    <div class="row marketing">
+      <% @petitions.each do |petition| %>
+        <div class="col-lg-6">
+          <h4><%= link_to petition.title, petition %> <%= petition.signature_count %></h4>
+          <p><%= petition.body %></p>
+        </div>
+      <% end %>
+    </div>
+</div>

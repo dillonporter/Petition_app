@@ -5,36 +5,41 @@
 
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
 <body>
     <div class="container">
-      <div class="header clearfix">
+        <div class="header clearfix">
         <nav>
           <ul class="nav nav-pills float-right">
             <li class="nav-item">
-              <%= link_to "Home", root_path %>
+              <%= link_to "Home", root_path, class: "nav-link active"%>
             </li>
             <li class="nav-item">
               <% if user_signed_in? %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
             <% else %>
-            <%= link_to "Sign in", new_user_session_path %>
+            <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
             <% end %>
             </li>
           </ul>
         </nav>
         <h3 class="text-muted">Moxie.com</h3>
-      </div>
+        </div>
     </div>
-   <%= render 'partials/jumbotron' %>
+    <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-
-
-
-    <%= yield %>
+        <%= yield %>
+        <%= render 'partials/footer' %>
+    </div>
   </body>
 </html>

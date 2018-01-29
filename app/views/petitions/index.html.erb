@@ -1,61 +1,16 @@
-<html>
-<body>
 <div class="container">
   <h2>Trending petitions</h2>
     <div class="row marketing">
-      <div class="col-lg-6">
-        <h4>Subheading</h4>
-        <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-        <h4>Subheading</h4>
-        <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-        <h4>Subheading</h4>
-        <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-      </div>
-
-      <div class="col-lg-6">
-        <h4>Subheading</h4>
-        <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-        <h4>Subheading</h4>
-        <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-        <h4>Subheading</h4>
-        <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-      </div>
+      <% @petitions.each do |petition| %>
+        <div class="col-lg-6">
+          <h4><%= link_to petition.title, petition %> <%= petition.signature_count %></h4>
+          <p><%= petition.body %></p>
+        </div>
+      <% end %>
     </div>
 </div>
-  </body>
-</html>
+  
 
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Signature Count</th>
-      <th>Petition Title</th>
-      <th>Body</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @petitions.each do |petition| %>
-      <tr>
-        <td><%= petition.signature_count %></td>
-        <td><%= petition.title %></td>
-        <td><%= petition.body %></td>
-        <td><%= link_to 'Show', petition %></td>
-        <td><%= link_to 'Edit', edit_petition_path(petition) %></td>
-        <td><%= link_to 'Delete Petition', petition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 
 
 
