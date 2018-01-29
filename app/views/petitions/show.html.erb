@@ -3,3 +3,12 @@
 <h1><%= @petition.title %></h1>
 
 <p><%= @petition.body %></p>
+
+<p><%= @petition.expiration_date.strftime("Expires on %B %d, %Y") %></p>
+
+<p><%= @petition.signature_count %></p>
+
+<% if user_signed_in? %>
+  <%= link_to 'Sign Petition', sign_count_path(@petition), class: "btn btn-primary" %>
+<% end %>
+
